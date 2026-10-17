@@ -12,5 +12,7 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.compose) apply false
     id("com.apollographql.apollo") version "5.2.0"
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.hilt.android) apply false
 
 }

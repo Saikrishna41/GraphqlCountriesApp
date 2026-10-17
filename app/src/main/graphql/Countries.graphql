@@ -5,8 +5,12 @@ query Countries {
        emoji
        code
        currency
-       languages
-       continent
+       languages {
+           name
+       }
+       continent {
+           name
+       }
 
    }
 }

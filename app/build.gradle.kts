@@ -4,6 +4,7 @@ plugins {
     id("com.apollographql.apollo") version "5.2.0"
 
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
 android {
@@ -69,4 +70,9 @@ dependencies {
     implementation("com.apollographql.apollo:apollo-runtime:5.2.0")
 
     implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)}
+    ksp(libs.hilt.compiler)
+
+    // Hilt for Compose and ViewModel
+    implementation("androidx.hilt:hilt-navigation-compose:1.4.0")
+}
+

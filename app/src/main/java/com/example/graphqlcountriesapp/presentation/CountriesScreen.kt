@@ -22,9 +22,10 @@ import com.example.graphqlcountriesapp.domain.model.SimpleCountry
 fun CountriesScreen(
     state: CountriesViewModel.CountriesState,
     onSelectCountry: (code: String) -> Unit,
-    onDismissDialog: () -> Unit
+    onDismissDialog: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier) {
         if (state.isLoading) {
             CircularProgressIndicator(
                 modifier = Modifier.align(Alignment.Center)
@@ -36,7 +37,7 @@ fun CountriesScreen(
                         country = country,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(300.dp)
+                            .height(100.dp)
                     )
                 }
             }
