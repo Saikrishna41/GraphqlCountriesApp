@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("com.apollographql.apollo") version "5.2.0"
+
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -34,11 +37,21 @@ android {
     buildFeatures {
         compose = true
     }
+    apollo {
+        service("service") {
+            packageName.set("com.example")
+            introspection {
+                endpointUrl.set("https://countries.trevorblades.com/")
+                schemaFile.set(file("src/main/graphql/schema.graphqls"))
+            }
+        }
+    }
 }
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
@@ -52,4 +65,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
-}
+
+    implementation("com.apollographql.apollo:apollo-runtime:5.2.0")
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)}
